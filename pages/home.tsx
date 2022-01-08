@@ -1,8 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { attributes, react as HomeContent } from "../content/home.md";
 
 const Home: NextPage = () => {
+  let { title, boxes } = attributes;
   return (
     <div className={styles.container}>
       <Head>
@@ -13,9 +15,18 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          tu wkrótce znajdziesz swoje <strong>zaczarowane pudełko</strong>
-        </h1>
+        <article>
+          <h1>{title}</h1>
+          <HomeContent />
+          <ul>
+            {boxes.map((box, k) => (
+              <li key={k}>
+                <h2>{box.name}</h2>
+                <p>{box.description}</p>
+              </li>
+            ))}
+          </ul>
+        </article>
       </main>
 
       <footer className={styles.footer}>
