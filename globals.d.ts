@@ -4,8 +4,8 @@ interface Box {
   image: string;
 }
 
-declare module "*/home.md" {
-  import React from "react";
+declare module '*/home.md' {
+  import React from 'react';
   const attributes: {
     title: string;
     date: string;
