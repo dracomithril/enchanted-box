@@ -4,12 +4,28 @@
 
 .main {
   min-height: 94vh;
-  padding: 4rem 0;
+  padding: 1rem 0;
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: [header] 1rem [content] [boxes] 4fr;
   justify-content: center;
   align-items: center;
+
+  header {
+    grid-row: 'header';
+    background-color: cadetblue;
+  }
+  .content {
+    grid-row: 'content';
+  }
+
+  .list {
+    grid-row: 'boxes';
+    display: flex;
+    column-gap: 5px;
+    row-gap: 5px;
+    flex-wrap: wrap;
+  }
 }
 
 .footer {

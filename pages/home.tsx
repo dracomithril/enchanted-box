@@ -1,45 +1,69 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from './home.module.scss';
 import { attributes, react as HomeContent } from '../content/home.md';
-import Image from 'next/image';
+import CardMedia from '@mui/material/CardMedia';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Toolbar } from '@mui/material';
+
+function MediaCard({ photo, name, description }: Box) {
+  return (
+    <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        height="140"
+        image={photo}
+        alt="green iguana"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {description}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Podziel się</Button>
+      </CardActions>
+    </Card>
+  );
+}
 
 const Home: NextPage = () => {
-  let { title, boxes } = attributes;
+  let { title, boxes, meta } = attributes;
   return (
     <div className={styles.container}>
       <Head>
-        <title>zaczarowane pudełko</title>
-        <meta
-          name="description"
-          content="magiczne pudełka na wyjatkowe okazje"
-        />
+        <title>{title}</title>
+        <meta name="description" content={meta} />
         <link rel="icon" href="/favicon.ico" />
         <script
           defer
           src="https://identity.netlify.com/v1/netlify-identity-widget.js"
         />
       </Head>
-
+      <Toolbar style={{ backgroundColor: 'cadetblue', color: 'antiquewhite' }}>
+        <h1>{title}</h1>
+      </Toolbar>
       <main className={styles.main}>
-        <article>
-          <h1>{title}</h1>
+        <div className={styles.content}>
           <HomeContent />
-          <ul>
-            {boxes.map((box, k) => (
-              <li key={k}>
-                <h2>{box.name}</h2>
-                <p>{box.description}</p>
-                <Image
-                  src={box.image}
-                  height={144}
-                  width={144}
-                  alt={box.name.replace(' ', '_')}
-                />
-              </li>
-            ))}
-          </ul>
-        </article>
+        </div>
+        <ul className={styles.list}>
+          {boxes.map((box, k) => (
+            <MediaCard
+              key={k}
+              description={box.description}
+              name={box.name}
+              photo={`${box.photo}-/scale_crop/342x140/smart/`}
+            />
+          ))}
+        </ul>
       </main>
 
       <footer className={styles.footer}>

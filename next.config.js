@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  images: {
+    domains: ['ucarecdn.com'],
+  },
   reactStrictMode: true,
   webpack: (cfg) => {
     cfg.module.rules.push({
