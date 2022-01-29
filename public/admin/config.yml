@@ -1,5 +1,5 @@
 backend:
-  # name: git-gateway
+  name: git-gateway
   # name: test-repo
   branch: main # Branch to update (optional; defaults to master)
 media_library:
@@ -13,9 +13,9 @@ collections:
   - name: 'pages'
     label: 'Pages'
     files:
-      - label: 'Home'
-        name: 'home'
-        file: 'content/home.md'
+      - label: 'box1'
+        name: 'box'
+        file: 'content/pages/box.md'
         fields:
           - { label: 'Tytuł', name: 'title', widget: 'string' }
           - { label: 'meta', name: 'meta', widget: 'string' }

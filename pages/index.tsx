@@ -4,7 +4,7 @@ import styles from './home.module.scss';
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ backgroundColor: '#5f9ea0' }}>
       <Head>
         <title>zaczarowane pudełko</title>
         <meta
