@@ -2,23 +2,31 @@ backend:
   name: git-gateway
   # name: test-repo
   branch: main # Branch to update (optional; defaults to master)
+media_library:
+  name: uploadcare
+  config:
+    publicKey: 8028dcd5f23a72a5e520
+locale: 'pl'
 media_folder: public/img
 public_folder: img
 collections:
-  - name: "pages"
-    label: "Pages"
+  - name: 'pages'
+    label: 'Pages'
     files:
-      - label: "Home"
-        name: "home"
-        file: "content/home.md"
+      - label: 'box1'
+        name: 'box'
+        file: 'content/pages/box.md'
         fields:
-          - { label: "Tytuł", name: "title", widget: "string" }
-          - { label: "Data publikacji", name: "date", widget: "datetime" }
-          - { label: "Opis", name: "body", widget: "markdown" }
-          - label: "Pudełka"
-            name: "boxes"
+          - { label: 'Tytuł', name: 'title', widget: 'string' }
+          - { label: 'meta', name: 'meta', widget: 'string' }
+          - { label: 'Data publikacji', name: 'date', widget: 'datetime' }
+          - { label: 'Opis', name: 'body', widget: 'markdown' }
+          - label: 'Pudełka'
+            name: 'boxes'
             widget: list
             fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: Photo, name: photo, widget: image }
+              - { label: 'Name', name: 'name', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+              - label: Photo
+                name: photo
+                widget: image
