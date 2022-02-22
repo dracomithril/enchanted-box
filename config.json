@@ -1,0 +1,19 @@
+{
+  "base_url": "https://zaczarowanepudelko.pl",
+  "site_title": "Zaczarowane pudełko",
+  "site_description": "",
+  "site_keywords": [
+    {
+      "keyword": "rękodzieło"
+    },
+    {
+      "keyword": "pudełka"
+    },
+    {
+      "keyword": "recznie robione"
+    }
+  ],
+  "posts_per_page": 5,
+  "twitter_account": "",
+  "github_account": ""
+}
