@@ -16,3 +16,13 @@ declare module '*/box.md' {
   const react: React.VFC;
   export { attributes, react };
 }
+
+declare module '*.json' {
+  const value: any;
+  export default value;
+}
+
+declare module '*.yml' {
+  const value: any;
+  export default value;
+}

@@ -2,48 +2,13 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { attributes, react as HomeContent } from '../content/pages/box.md';
-import CardMedia from '@mui/material/CardMedia';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Box, CardActionArea, Modal, Toolbar } from '@mui/material';
-import { MouseEventHandler, useState } from 'react';
+import { Box, Modal, Toolbar } from '@mui/material';
+import { useState } from 'react';
 import styles from './pudelka.module.scss';
 import { ChevronLeft, ChevronRight, Close } from '@mui/icons-material';
-
-function MediaCard({
-  photo,
-  name,
-  description,
-  onClick,
-}: EnchantedBox & { onClick?: MouseEventHandler<HTMLButtonElement> }) {
-  return (
-    <Card sx={{ maxWidth: 345 }} raised>
-      <CardActionArea onClick={onClick}>
-        <CardMedia
-          component="img"
-          height="140"
-          image={photo}
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-
-      <CardActions>
-        <Button size="small">Podziel się</Button>
-      </CardActions>
-    </Card>
-  );
-}
+import { MediaCard } from '../components/MediaCard';
 
 const Boxes: NextPage = () => {
   let { title, boxes, meta } = attributes;
