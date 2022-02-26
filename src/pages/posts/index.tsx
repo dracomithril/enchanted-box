@@ -1,13 +1,16 @@
 import { Chip } from '@mui/material';
-import { GetStaticProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import React from 'react';
+import styled from 'styled-components';
 import Layout from '../../components/Layout';
 import { MediaCard } from '../../components/MediaCard';
 import config from '../../lib/config';
 import { countPosts, listPostContent, PostContent } from '../../lib/posts';
 import { listTags, TagContent } from '../../lib/tags';
+import style from './posts.module.scss';
 
 type PostProps = {
+  className?: string;
   posts: PostContent[];
   tags: TagContent[];
   pagination: {
@@ -16,32 +19,38 @@ type PostProps = {
   };
 };
 
-const Posts = ({ posts, tags, pagination }: PostProps) => {
+const Posts: NextPage<PostProps> = ({ posts, tags, pagination, className }) => {
   return (
     <Layout>
-      <ul>
+      <div className={className}>
         {posts.map((post, i) => (
-          <li key={i}>
-            <MediaCard
-              tags={post.tags}
-              title={post.title}
-              photo={`${post.photo}-/scale_crop/342x140/smart/`}
-            />
-          </li>
+          <MediaCard
+            key={i}
+            tags={post.tags}
+            title={post.title}
+            photo={`${post.photo}-/scale_crop/342x140/smart/`}
+          />
         ))}
-      </ul>
-      <ul>
+      </div>
+      <div>
         {tags.map((tag, i) => (
-          <li key={i}>
-            <Chip label={tag.name} />
-          </li>
+          <Chip key={i} label={tag.name} />
         ))}
-      </ul>
+      </div>
     </Layout>
   );
 };
 
-export default Posts;
+const WithStyles = styled(Posts)`
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  column-gap: 10px;
+  row-gap: 10px;
+`;
+
+export default WithStyles;
 
 export const getStaticProps: GetStaticProps<PostProps> = async () => {
   const posts = listPostContent(1, config.posts_per_page);

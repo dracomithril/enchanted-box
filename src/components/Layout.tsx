@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Footer } from './Footer';
-import styles from './components.module.scss';
+import Footer from './Footer';
 import Navigation from './Navigation';
+import styled from 'styled-components';
 
-const Home: NextPage = ({ children }) => {
+const Layout: NextPage<{ className?: string }> = ({ className, children }) => {
   return (
-    <div className={styles.container}>
+    <div className={className}>
       <Head>
         <title>zaczarowane pudełko</title>
         <meta
@@ -22,10 +22,35 @@ const Home: NextPage = ({ children }) => {
       <nav>
         <Navigation />
       </nav>
-      <main className={styles.main}>{children}</main>
+      <main className={'main'}>{children}</main>
       <Footer />
     </div>
   );
 };
 
-export default Home;
+const WithStyles = styled(Layout)`
+  min-height: 94vh;
+  flex: 1;
+  display: grid;
+  grid-template-rows: [header] 100px [content] 3fr [footer];
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+
+  nav {
+    grid-row: 'header';
+
+    header {
+      background-color: cadetblue;
+    }
+  }
+  footer {
+    grid-row: 'footer';
+  }
+  .content {
+    grid-row: 'content';
+    background-color: hsl(0, 0%, 92%);
+  }
+`;
+
+export default WithStyles;
